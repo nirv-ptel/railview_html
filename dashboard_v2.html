@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RailView Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- tailwindcss -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
+
+    <!-- tailwind script -->
+    <script src="js/tailwindConfig.js"></script>
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-raised {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+        }
+
+        .btn-green-gradient {
+            background: linear-gradient(180deg, #4CAF50 0%, #388E3C 100%);
+            border-top: 1px solid #81C784;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-orange-gradient {
+            background: linear-gradient(180deg, #FF9800 0%, #F57C00 100%);
+            border-top: 1px solid #FFB74D;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-off-white text-gray-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header
+        class="flex w-full h-16 items-center justify-between px-6 bg-orange text-white shadow-lg sticky top-0 z-50 border-b border-orange-700">
+        <div class="flex items-center space-x-6">
+            <div class="logo">
+                <img class="h-12 drop-shadow-md" src="./images/logo/logo.png" alt="logo">
+            </div>
+            <nav>
+                <ul class="flex items-center space-x-1 text-sm font-semibold">
+                    <li><a class="px-4 py-2 bg-yellow-600/30 rounded-t-md border-t border-l border-r border-yellow-500/30 text-yellow-100 shadow-inner"
+                            href="dashboard_v2.html">Dashboard</a></li>
+                    <li><a class="px-4 py-2 hover:bg-white/10 rounded-md transition text-orange-100" href="#">Tags &
+                            Issues</a></li>
+                    <li><a class="px-4 py-2 hover:bg-white/10 rounded-md transition text-orange-100" href="#">AI
+                            Insights</a></li>
+                    <li><a class="px-4 py-2 hover:bg-white/10 rounded-md transition text-orange-100"
+                            href="#">Reports</a></li>
+                    <li><a class="px-4 py-2 hover:bg-white/10 rounded-md transition text-orange-100" href="#">User
+                            Management</a></li>
+                    <li><a class="px-4 py-2 hover:bg-white/10 rounded-md transition text-orange-100"
+                            href="#">Settings</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="relative group">
+                <button
+                    class="flex items-center space-x-2 bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-full border border-white/30 transition shadow-sm">
+                    <i class="fa-solid fa-search text-orange-100 text-xs"></i>
+                    <span class="text-sm text-orange-100 font-medium">Search...</span>
+                </button>
+            </div>
+            <div
+                class="flex items-center space-x-2 cursor-pointer bg-white/10 px-3 py-1.5 rounded-md hover:bg-white/20 transition border border-white/20 shadow-sm">
+                <span class="text-sm font-semibold text-orange-50">Hello, Mryansa</span>
+                <i class="fa-solid fa-chevron-down text-orange-200 text-xs"></i>
+            </div>
+            <button class="text-orange-200 hover:text-white transition"><i class="fa-solid fa-gear"></i></button>
+        </div>
+    </header>
+
+    <div class="flex-grow p-4 md:p-6 max-w-[1920px] mx-auto w-full space-y-6">
+
+        <!-- Hero Section -->
+        <div class="glass-panel p-4 rounded-xl flex items-center justify-between">
+            <div class="flex items-center space-x-5">
+                <div
+                    class="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-lg ring-2 ring-orange-200">
+                    <img src="https://ui-avatars.com/api/?name=DRM+Sharma&background=random&size=128" alt="User"
+                        class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-primary-900 drop-shadow-sm">Good afternoon, DRM Sharma!</h1>
+                    <div class="flex items-center space-x-6 text-sm text-gray-700 mt-1">
+                        <span
+                            class="flex items-center bg-green-100 text-green-800 px-2 py-0.5 rounded border border-green-200 shadow-sm"><i
+                                class="fa-solid fa-circle-check mr-2"></i> Divisional Railway Manager</span>
+                        <span
+                            class="flex items-center bg-blue-100 text-blue-800 px-2 py-0.5 rounded border border-blue-200 shadow-sm"><i
+                                class="fa-solid fa-map-pin mr-2"></i> Division: Jaipur (Last login: Today at 11:05
+                            AM)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right hidden lg:block">
+                <p class="text-sm text-gray-500 font-semibold uppercase tracking-wider">System Status</p>
+                <div class="flex items-center justify-end space-x-2 text-green-700 font-bold">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    <span>Operational</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Metrics Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <!-- Card 1 -->
+            <div
+                class="card-raised p-4 rounded-xl flex items-center space-x-3 border-l-4 border-orange-600 transition hover:-translate-y-1 duration-200">
+                <div
+                    class="w-10 h-10 rounded-full bg-orange-600 text-white flex items-center justify-center text-lg shadow-inner font-bold">
+                    !</div>
+                <div>
+                    <div class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">Total Issue Tags</div>
+                    <div class="text-2xl font-black text-gray-800">128</div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div
+                class="card-raised p-4 rounded-xl flex items-center space-x-3 border-l-4 border-green-600 transition hover:-translate-y-1 duration-200">
+                <div
+                    class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center text-lg shadow-inner font-bold">
+                    <i class="fa-solid fa-plus"></i></div>
+                <div>
+                    <div class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">Pending Tasks</div>
+                    <div class="text-2xl font-black text-gray-800">34</div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div
+                class="card-raised p-4 rounded-xl flex items-center space-x-3 border-l-4 border-orange-400 transition hover:-translate-y-1 duration-200">
+                <div
+                    class="w-10 h-10 rounded-full bg-orange-400 text-white flex items-center justify-center text-lg shadow-inner font-bold">
+                    <i class="fa-solid fa-list-ul"></i></div>
+                <div>
+                    <div class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">Recurring Problems</div>
+                    <div class="text-xs font-semibold text-orange-700">View List</div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div
+                class="card-raised p-4 rounded-xl flex items-center space-x-3 border-l-4 border-blue-600 transition hover:-translate-y-1 duration-200">
+                <div
+                    class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center text-lg shadow-inner font-bold">
+                    <i class="fa-solid fa-calendar-check"></i></div>
+                <div>
+                    <div class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">Scheduled Inspections</div>
+                    <div class="text-xs font-semibold text-blue-700">View Calendar</div>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div
+                class="card-raised p-4 rounded-xl flex items-center space-x-3 border-l-4 border-green-700 transition hover:-translate-y-1 duration-200">
+                <div
+                    class="w-10 h-10 rounded-full bg-green-700 text-white flex items-center justify-center text-lg shadow-inner font-bold">
+                    9</div>
+                <div>
+                    <div class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">Resolved Issues</div>
+                    <div class="text-xs font-semibold text-green-800">This Week</div>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div
+                class="card-raised p-4 rounded-xl flex items-center space-x-3 border-l-4 border-orange-500 transition hover:-translate-y-1 duration-200">
+                <div
+                    class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-lg shadow-inner font-bold">
+                    <i class="fa-solid fa-triangle-exclamation"></i></div>
+                <div>
+                    <div class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">Alerts</div>
+                    <div class="text-2xl font-black text-gray-800">5</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-6">
+            <!-- Left Main Column -->
+            <div class="lg:w-3/4 space-y-4">
+
+                <!-- Filter/Action Bar -->
+                <div class="glass-panel p-1 rounded-lg shadow-md border-t-4 border-green-700">
+                    <div
+                        class="bg-gradient-to-r from-gray-100 to-white p-3 rounded-t-md flex items-center justify-between border-b border-gray-200">
+                        <button
+                            class="btn-green-gradient text-white px-4 py-1.5 rounded shadow text-sm font-bold flex items-center hover:brightness-110 transition">
+                            <i class="fa-solid fa-tag mr-2"></i> Tag & Assign <i
+                                class="fa-solid fa-chevron-right ml-2 text-xs"></i>
+                        </button>
+                        <div class="flex space-x-6 text-xs text-gray-600 font-semibold px-2">
+                            <span class="flex items-center cursor-pointer hover:text-green-700"><i
+                                    class="fa-solid fa-building mr-1.5 text-gray-400"></i> Department</span>
+                            <span class="flex items-center cursor-pointer hover:text-green-700"><i
+                                    class="fa-solid fa-layer-group mr-1.5 text-gray-400"></i> Category <i
+                                    class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></span>
+                            <span class="flex items-center cursor-pointer hover:text-green-700"><i
+                                    class="fa-solid fa-envelope mr-1.5 text-gray-400"></i> Priority <i
+                                    class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></span>
+                            <span class="flex items-center cursor-pointer hover:text-green-700"><i
+                                    class="fa-solid fa-users mr-1.5 text-gray-400"></i> Assignee <i
+                                    class="fa-solid fa-chevron-down ml-1 text-[10px]"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-b-md grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+                        <div class="md:col-span-4">
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase mb-1">Issue
+                                Description</label>
+                            <div
+                                class="flex items-center bg-white border border-gray-300 rounded px-2 py-1.5 shadow-sm focus-within:ring-2 focus-within:ring-green-500/50">
+                                <span
+                                    class="bg-orange-100 text-orange-800 text-[10px] font-bold px-1.5 py-0.5 rounded mr-2 border border-orange-200 cursor-pointer hover:bg-orange-200">x</span>
+                                <input type="text" value="Jaipur - Ajmer Line, KM 82.4, Track 1"
+                                    class="text-xs font-medium w-full outline-none text-gray-700 bg-transparent placeholder-gray-400">
+                                <i class="fa-solid fa-chevron-down text-gray-400 text-[10px]"></i>
+                            </div>
+                        </div>
+                        <div class="md:col-span-3">
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase mb-1">Category</label>
+                            <div
+                                class="flex items-center bg-white border border-gray-300 rounded px-2 py-1.5 justify-between shadow-sm cursor-pointer hover:border-gray-400">
+                                <span class="text-xs font-medium text-gray-700 truncate">Continuously hot axle
+                                    box</span>
+                                <i class="fa-solid fa-chevron-down text-gray-400 text-[10px]"></i>
+                            </div>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase mb-1">Priority</label>
+                            <div
+                                class="flex items-center bg-white border border-gray-300 rounded px-2 py-1.5 justify-between shadow-sm cursor-pointer hover:border-gray-400">
+                                <span class="flex items-center text-xs font-bold text-orange-700"><span
+                                        class="w-2 h-2 rounded-full bg-orange-500 mr-2 shadow-sm"></span> High</span>
+                                <i class="fa-solid fa-chevron-down text-gray-400 text-[10px]"></i>
+                            </div>
+                        </div>
+                        <div class="md:col-span-3">
+                            <label class="block text-[10px] font-bold text-gray-500 uppercase mb-1">Assignee</label>
+                            <div
+                                class="flex items-center bg-white border border-gray-300 rounded px-2 py-1.5 space-x-2 shadow-sm cursor-pointer hover:border-gray-400">
+                                <div class="w-6 h-6 rounded-full overflow-hidden border border-gray-200">
+                                    <img src="https://ui-avatars.com/api/?name=O+T&background=random"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-[10px] font-bold text-gray-800 leading-tight truncate">Overseer
+                                        Tasked</div>
+                                    <div class="text-[9px] text-gray-500 leading-tight truncate">Security Violations
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Tags Table -->
+                <div class="glass-panel p-4 rounded-lg shadow-md bg-white/60">
+                    <div class="flex items-center justify-between mb-4 pb-2 border-b border-gray-200">
+                        <h3 class="text-lg font-bold text-primary-900 group flex items-center cursor-pointer">
+                            Recent Tags & Tasks
+                            <i
+                                class="fa-solid fa-chevron-down ml-2 text-xs text-gray-400 group-hover:text-primary-700 transition"></i>
+                        </h3>
+                        <div class="flex space-x-2">
+                            <button class="text-gray-400 hover:text-gray-600"><i
+                                    class="fa-solid fa-filter"></i></button>
+                            <button class="text-gray-400 hover:text-gray-600"><i
+                                    class="fa-solid fa-expand"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr
+                                    class="text-left text-xs font-bold text-gray-500 uppercase border-b border-gray-200 bg-gray-50/50">
+                                    <th class="py-2 pl-3 rounded-tl-md">Issue Description</th>
+                                    <th class="py-2">Department</th>
+                                    <th class="py-2">Status</th>
+                                    <th class="py-2">Priority</th>
+                                    <th class="py-2">Assignee</th>
+                                    <th class="py-2 pr-3 rounded-tr-md text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <!-- Row 1 -->
+                                <tr class="hover:bg-green-50/50 transition duration-150 group">
+                                    <td class="py-3 pl-3">
+                                        <div class="font-bold text-gray-700">Loose Fish Plate Bolts - KM 56.8</div>
+                                    </td>
+                                    <td class="py-3 text-gray-600 font-medium">Track Maintenance</td>
+                                    <td class="py-3"><span
+                                            class="bg-gradient-to-b from-green-500 to-green-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm border border-green-600">InProgress</span>
+                                    </td>
+                                    <td class="py-3 text-gray-500 font-medium">Low</td>
+                                    <td class="py-3">
+                                        <div class="flex items-center space-x-2">
+                                            <img src="https://ui-avatars.com/api/?name=A+V&background=random"
+                                                class="w-6 h-6 rounded-full border border-gray-200 shadow-sm">
+                                            <div>
+                                                <div class="font-bold text-xs text-gray-800">Abhishek Verna</div>
+                                                <div class="text-[9px] text-gray-500">Sr. Section Engineer</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-3 pr-3 text-right">
+                                        <button
+                                            class="text-gray-400 hover:text-orange-600 font-bold text-xs bg-white border border-gray-200 px-2 py-1 rounded shadow-sm hover:shadow transition">
+                                            <i class="fa-solid fa-flag mr-1 text-orange-500"></i> Create Tag <i
+                                                class="fa-solid fa-caret-down ml-1"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Row 2 -->
+                                <tr class="hover:bg-green-50/50 transition duration-150 group">
+                                    <td class="py-3 pl-3">
+                                        <div class="font-bold text-gray-700">Continuously hot axle box</div>
+                                    </td>
+                                    <td class="py-3 text-gray-600 font-medium">Mechanical</td>
+                                    <td class="py-3"><span
+                                            class="bg-gradient-to-b from-yellow-500 to-yellow-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm border border-yellow-600">Pending</span>
+                                    </td>
+                                    <td class="py-3 text-orange-600 font-bold">High</td>
+                                    <td class="py-3">
+                                        <div class="flex items-center space-x-2">
+                                            <img src="https://ui-avatars.com/api/?name=S+T&background=random"
+                                                class="w-6 h-6 rounded-full border border-gray-200 shadow-sm">
+                                            <div>
+                                                <div class="font-bold text-xs text-gray-800">Sudhir Tripathi</div>
+                                                <div class="text-[9px] text-gray-500">Sr. Section Engineer</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-3 pr-3 text-right relative">
+                                        <button
+                                            class="text-gray-400 hover:text-gray-700 font-bold text-xs px-2 py-1 rounded hover:bg-gray-100 transition"><i
+                                                class="fa-solid fa-ellipsis"></i> Actions</button>
+                                    </td>
+                                </tr>
+                                <!-- Row 3 -->
+                                <tr class="hover:bg-green-50/50 transition duration-150 group">
+                                    <td class="py-3 pl-3">
+                                        <div class="font-bold text-gray-700">Obstructed Signal - KM 112.2</div>
+                                    </td>
+                                    <td class="py-3 text-gray-600 font-medium">Signaling</td>
+                                    <td class="py-3"><span
+                                            class="bg-gradient-to-b from-red-500 to-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm border border-red-600">Pending</span>
+                                    </td>
+                                    <td class="py-3 text-gray-500 font-medium">Medium</td>
+                                    <td class="py-3">
+                                        <div class="flex items-center space-x-2">
+                                            <img src="https://ui-avatars.com/api/?name=R+K&background=random"
+                                                class="w-6 h-6 rounded-full border border-gray-200 shadow-sm">
+                                            <div>
+                                                <div class="font-bold text-xs text-gray-800">Ranjit Kumar</div>
+                                                <div class="text-[9px] text-gray-500">Signal Inspector</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-3 pr-3 text-right">
+                                        <button
+                                            class="text-gray-400 hover:text-gray-700 font-bold text-xs px-2 py-1 rounded hover:bg-gray-100 transition"><i
+                                                class="fa-solid fa-ellipsis"></i> Actions</button>
+                                    </td>
+                                </tr>
+                                <!-- Row 4 -->
+                                <tr class="hover:bg-green-50/50 transition duration-150 group">
+                                    <td class="py-3 pl-3">
+                                        <div class="font-bold text-gray-700">Sagging Overhead Wire</div>
+                                    </td>
+                                    <td class="py-3 text-gray-600 font-medium">Electrical</td>
+                                    <td class="py-3"><span
+                                            class="bg-gradient-to-b from-orange-400 to-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm border border-orange-500">Medical</span>
+                                    </td>
+                                    <td class="py-3 text-orange-600 font-bold">High</td>
+                                    <td class="py-3">
+                                        <div class="flex items-center space-x-2">
+                                            <img src="https://ui-avatars.com/api/?name=D+S&background=random"
+                                                class="w-6 h-6 rounded-full border border-gray-200 shadow-sm">
+                                            <div>
+                                                <div class="font-bold text-xs text-gray-800">Deepak Singh</div>
+                                                <div class="text-[9px] text-gray-500">Electrical Engineer</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-3 pr-3 text-right">
+                                        <button
+                                            class="text-gray-400 hover:text-gray-700 font-bold text-xs px-2 py-1 rounded hover:bg-gray-100 transition"><i
+                                                class="fa-solid fa-ellipsis"></i> Actions</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Footer Action Area -->
+                <div
+                    class="flex items-center justify-between p-4 bg-yellow-50/80 rounded-lg border border-yellow-200 shadow-inner">
+                    <div class="flex items-center space-x-4 text-sm text-gray-700">
+                        <span
+                            class="bg-orange-100 text-orange-700 w-8 h-8 flex items-center justify-center rounded-full shadow-sm border border-orange-200 flex-shrink-0"><i
+                                class="fa-solid fa-triangle-exclamation"></i></span>
+                        <span class="font-medium text-xs md:text-sm">Frequent issue of hot axle box heating up, needs
+                            urgent monitoring and maintenance. Issue recurring on same wheel axle.</span>
+                    </div>
+                    <div class="flex space-x-2 shrink-0">
+                        <button
+                            class="bg-white hover:bg-gray-50 border border-gray-300 text-gray-600 px-3 py-1.5 rounded shadow-sm text-xs font-bold transition flex items-center"><i
+                                class="fa-solid fa-paperclip mr-1"></i> Attach Photos</button>
+                        <button
+                            class="btn-green-gradient text-white px-4 py-1.5 rounded shadow-md text-xs font-bold hover:brightness-110 transition">Create
+                            Tag</button>
+                    </div>
+                </div>
+
+                <div
+                    class="btn-orange-gradient text-white py-3 px-4 rounded-md shadow-lg text-center font-bold cursor-pointer hover:brightness-110 transition flex items-center justify-center space-x-2 group">
+                    <i class="fa-solid fa-tag group-hover:rotate-12 transition transform"></i>
+                    <span>Tag an Issue</span>
+                </div>
+
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="lg:w-1/4 space-y-6">
+                <!-- Issue Breakdown -->
+                <div class="glass-panel p-5 rounded-lg shadow-md bg-white/70">
+                    <h3 class="text-lg font-bold text-primary-900 mb-4 border-b border-gray-200 pb-2">Issue Breakdown
+                    </h3>
+                    <!-- CSS Only Pie Chart -->
+                    <div class="relative w-48 h-48 mx-auto my-6 rounded-full shadow-lg" style="background: conic-gradient(
+                             #ef4444 0% 25%, 
+                             #eab308 25% 40%, 
+                             #22c55e 40% 70%, 
+                             #f97316 70% 100%
+                         );">
+                        <div
+                            class="absolute inset-4 bg-white rounded-full flex flex-col items-center justify-center shadow-inner">
+                            <span class="text-3xl font-black text-gray-800">128</span>
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Total</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 text-xs space-y-2 text-gray-700 font-medium">
+                        <div class="flex justify-between items-center"><span class="flex items-center"><span
+                                    class="w-2.5 h-2.5 rounded-sm inline-block bg-fuchsia-600 mr-2 shadow-sm"></span>
+                                Mechanical</span> <span class="font-bold">23.4%</span></div>
+                        <div class="flex justify-between items-center"><span class="flex items-center"><span
+                                    class="w-2.5 h-2.5 rounded-sm inline-block bg-red-500 mr-2 shadow-sm"></span> Track
+                                Maint.</span> <span class="font-bold">26.4%</span></div>
+                        <div class="flex justify-between items-center"><span class="flex items-center"><span
+                                    class="w-2.5 h-2.5 rounded-sm inline-block bg-yellow-500 mr-2 shadow-sm"></span>
+                                Electrical</span> <span class="font-bold">16.4%</span></div>
+                        <div class="flex justify-between items-center"><span class="flex items-center"><span
+                                    class="w-2.5 h-2.5 rounded-sm inline-block bg-green-500 mr-2 shadow-sm"></span>
+                                Signaling</span> <span class="font-bold">15.6%</span></div>
+                    </div>
+                </div>
+
+                <!-- Assignee Performance -->
+                <div class="glass-panel p-5 rounded-lg shadow-md bg-white/70">
+                    <h3 class="text-lg font-bold text-primary-900 mb-4 border-b border-gray-200 pb-2">Assignee
+                        Performance</h3>
+                    <div class="space-y-4 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                        <!-- User 1 -->
+                        <div
+                            class="flex items-center justify-between pb-2 border-b border-gray-100 hover:bg-white/50 rounded transition p-1 cursor-pointer">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://ui-avatars.com/api/?name=S+T&background=random"
+                                    class="w-9 h-9 rounded-full border border-gray-300 shadow-sm">
+                                <div>
+                                    <div class="font-bold text-sm text-gray-800">Sudhir Tripathi</div>
+                                    <div class="text-[10px] text-gray-500 font-semibold">Track Maintainer</div>
+                                </div>
+                            </div>
+                            <div class="text-right text-xs">
+                                <div class="font-bold text-gray-800">14 Tasks</div>
+                                <div class="text-orange-600 font-bold">5 Pending</div>
+                            </div>
+                        </div>
+                        <!-- User 2 -->
+                        <div
+                            class="flex items-center justify-between pb-2 border-b border-gray-100 hover:bg-white/50 rounded transition p-1 cursor-pointer">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://ui-avatars.com/api/?name=A+V&background=random"
+                                    class="w-9 h-9 rounded-full border border-gray-300 shadow-sm">
+                                <div>
+                                    <div class="font-bold text-sm text-gray-800">Abhishek Verna</div>
+                                    <div class="text-[10px] text-gray-500 font-semibold">Section Engineer</div>
+                                </div>
+                            </div>
+                            <div class="text-right text-xs">
+                                <div class="font-bold text-gray-800">11 Tasks</div>
+                                <div class="text-orange-600 font-bold">9 Pending</div>
+                            </div>
+                        </div>
+                        <!-- User 3 -->
+                        <div
+                            class="flex items-center justify-between pb-2 border-b border-gray-100 hover:bg-white/50 rounded transition p-1 cursor-pointer">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://ui-avatars.com/api/?name=D+S&background=random"
+                                    class="w-9 h-9 rounded-full border border-gray-300 shadow-sm">
+                                <div>
+                                    <div class="font-bold text-sm text-gray-800">Deepak Singh</div>
+                                    <div class="text-[10px] text-gray-500 font-semibold">Section Engineer</div>
+                                </div>
+                            </div>
+                            <div class="text-right text-xs">
+                                <div class="font-bold text-gray-800">12 Tasks</div>
+                                <div class="text-green-600 font-bold">5 Avg</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex mt-6 space-x-2 border-t border-gray-200 pt-4 overflow-x-auto pb-2">
+                        <div
+                            class="bg-green-700 text-white min-w-8 h-8 flex items-center justify-center rounded text-xs font-bold shadow-md transform hover:scale-110 transition cursor-pointer">
+                            7</div>
+                        <div
+                            class="bg-green-700 text-white min-w-8 h-8 flex items-center justify-center rounded text-xs font-bold shadow-md transform hover:scale-110 transition cursor-pointer">
+                            8</div>
+                        <div
+                            class="bg-orange-500 text-white min-w-8 h-8 flex items-center justify-center rounded text-xs font-bold shadow-md transform hover:scale-110 transition cursor-pointer">
+                            6</div>
+                        <div
+                            class="bg-green-800/80 text-white min-w-8 h-8 flex items-center justify-center rounded text-xs font-bold shadow-md transform hover:scale-110 transition cursor-pointer">
+                            5</div>
+                        <div
+                            class="bg-green-800/80 text-white min-w-8 h-8 flex items-center justify-center rounded text-xs font-bold shadow-md transform hover:scale-110 transition cursor-pointer">
+                            9</div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-gradient-to-r from-green-800 to-green-900 text-white py-3 px-4 rounded-md shadow-lg flex justify-between items-center cursor-pointer hover:shadow-xl transition transform hover:scale-[1.02]">
+                    <span class="font-bold text-sm"><i class="fa-solid fa-envelope mr-3"></i> Message Center</span>
+                    <i
+                        class="fa-solid fa-chevron-right text-xs bg-white/20 rounded-full w-5 h-5 flex items-center justify-center"></i>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

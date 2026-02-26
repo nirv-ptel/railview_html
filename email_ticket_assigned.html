@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RailView — Ticket Assigned</title>
+    <style>
+      body,table,td,a{ -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
+      table,td{ mso-table-lspace:0pt; mso-table-rspace:0pt; }
+      img{ border:0; height:auto; line-height:100%; outline:none; text-decoration:none; }
+      body{ margin:0; padding:0; width:100% !important; background:#f7f3f0; font-family:Arial,Helvetica,sans-serif; }
+      .container{ max-width:700px; margin:24px auto; background:#fff; border-radius:8px; overflow:hidden; }
+      .header{ background:#d97706; color:#fff; padding:16px 20px; display:flex; gap:12px; align-items:center; }
+      .body{ padding:20px; color:#333; }
+      .meta{ font-size:13px; color:#555; margin-bottom:12px; }
+      .card{ border:1px solid #efe6da; background:#fffaf1; padding:12px; border-radius:8px; }
+      .label{ font-weight:700; color:#374151; }
+      .cta{ display:inline-block; background:#388E3C; color:#fff; padding:10px 14px; border-radius:6px; text-decoration:none; font-weight:700; }
+      .footer{ background:#fbf8f6; padding:14px 18px; font-size:12px; color:#6b6b6b; }
+      @media only screen and (max-width:480px){ .body{ padding:14px; } }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div style="width:44px;height:44px;border-radius:6px;background:#fff;padding:4px;"><img src="./images/logo/logo.png" style="width:100%;height:100%;object-fit:contain;border-radius:4px;"/></div>
+        <div>
+          <div style="font-weight:700;">RailView Admin</div>
+          <div style="font-size:12px;opacity:.95;">Ticket Assignment</div>
+        </div>
+      </div>
+      <div class="body">
+        <h2 style="margin:0 0 6px 0;">A ticket has been assigned to you</h2>
+        <p class="meta">Ticket assigned by <strong>{{assigner_name}}</strong> — assigned to <strong>{{assignee_name}}</strong></p>
+
+        <div class="card">
+          <div style="margin-bottom:8px;"><span class="label">Ticket:</span> <strong>{{ticket_id}}</strong></div>
+          <div style="margin-bottom:8px;"><span class="label">Title:</span> {{ticket_title}}</div>
+          <div style="margin-bottom:8px;"><span class="label">Priority:</span> {{priority}}</div>
+          <div style="margin-bottom:8px;"><span class="label">Due:</span> {{due_date}}</div>
+        </div>
+
+        <p style="margin-top:12px;">You can view and update the ticket details in the admin panel.</p>
+        <a class="cta" href="{{ticket_link}}">View Ticket</a>
+      </div>
+      <div class="footer">RailView — Ticketing notifications</div>
+    </div>
+  </body>
+</html>

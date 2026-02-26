@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RailView Admin - Products</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- tailwindcss -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
+
+    <script src="js/tailwindConfig.js"></script>
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-raised {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+        }
+
+        .sidebar-item-active {
+            background: linear-gradient(90deg, #d97706 0%, #b45309 100%);
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-green-gradient {
+            background: linear-gradient(180deg, #4CAF50 0%, #388E3C 100%);
+            border-top: 1px solid #81C784;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .table-header-custom {
+            background-color: #5a6b58; /* muted green */
+            color: white;
+        }
+
+        .row-custom:nth-child(odd) {
+            background-color: #fff7ed;
+        }
+
+        .row-custom:nth-child(even) {
+            background-color: #ffedd5;
+        }
+
+        .pagination-btn {
+            background: #f7f3ea;
+            border: 1px solid #d1c9b9;
+            padding: 6px 10px;
+            border-radius: 6px;
+            min-width: 36px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="bg-off-white text-gray-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header
+        class="flex w-full h-16 items-center justify-between px-6 bg-orange text-white shadow-lg sticky top-0 z-50 border-b border-orange-700">
+        <div class="flex items-center space-x-4">
+            <div class="logo">
+                <img class="h-10 drop-shadow-md" src="./images/logo/logo.png" alt="logo">
+            </div>
+            <div class="h-8 w-[1px] bg-white/30 hidden md:block"></div>
+            <h1 class="text-xl font-bold hidden md:block text-orange-50 drop-shadow-sm">RailView Admin</h1>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div
+                class="flex items-center bg-white/10 px-3 py-1.5 rounded-md hover:bg-white/20 transition border border-white/20 shadow-sm cursor-pointer">
+                <i class="fa-solid fa-search text-orange-200 mr-2 text-sm"></i>
+                <span class="text-sm font-semibold text-orange-50">Hello, Administrator</span>
+                <i class="fa-solid fa-chevron-down text-orange-200 text-xs ml-2"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex flex-grow max-w-[1920px] mx-auto w-full">
+
+        <!-- Sidebar -->
+        <aside
+            class="w-64 bg-off-white/50 border-r border-gray-200 hidden md:flex flex-col pt-6 pb-6 space-y-2 px-4 sticky top-16 h-[calc(100vh-64px)] overflow-y-auto">
+            <a href="index.html"
+                class="flex items-center px-4 py-3 rounded-md transition transform hover:scale-[1.02]">
+                <i class="fa-solid fa-border-all w-6"></i>
+                <span class="font-bold text-sm">Dashboard Overview</span>
+            </a>
+            <a href="dashboard_v3.html"
+                class="sidebar-item-active flex items-center px-4 py-3 rounded-md transition transform hover:scale-[1.02]">
+                <div class="w-6"><i class="fa-solid fa-users"></i></div>
+                <span class="font-bold text-sm">User Management</span>
+            </a>
+            <a href="#"
+                class="flex items-center px-4 py-3 text-gray-700 hover:bg-white/50 rounded-md transition hover:text-orange-700 group">
+                <div class="w-6"><i class="fa-solid fa-gears group-hover:scale-110 transition"></i></div>
+                <span class="font-semibold text-sm">System Settings</span>
+            </a>
+            <a href="#"
+                class="flex items-center px-4 py-3 text-gray-700 hover:bg-white/50 rounded-md transition hover:text-orange-700 group">
+                <div class="w-6"><i class="fa-solid fa-robot group-hover:scale-110 transition"></i></div>
+                <span class="font-semibold text-sm">AI Configuration</span>
+            </a>
+
+            <div class="mt-auto pt-8 opacity-50">
+                <img src="./images/logo/logo.png" class="w-24 grayscale opacity-30 mx-auto">
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-grow p-6 space-y-6 overflow-y-auto">
+
+            <div class="glass-panel p-5 rounded-xl shadow-md">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Products</h2>
+
+                <div class="flex justify-between items-center mb-4">
+                    <div class="relative w-1/2">
+                        <input id="searchInput" type="text" placeholder="Search Products..."
+                            class="w-full bg-orange-50 border border-orange-200 rounded-md py-2 pl-3 pr-8 text-sm focus:outline-none focus:ring-1 focus:ring-orange-400">
+                        <i class="fa-solid fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-orange-400"></i>
+                    </div>
+                    <button
+                        class="btn-green-gradient text-white px-4 py-1.5 rounded shadow text-xs font-bold hover:brightness-110 transition flex items-center">
+                        <i class="fa-solid fa-plus mr-1.5"></i> Add New Product
+                    </button>
+                </div>
+
+                <div class="overflow-hidden rounded-lg border border-gray-200 shadow-sm">
+                    <table class="w-full">
+                        <thead class="table-header-custom text-xs uppercase font-semibold">
+                            <tr>
+                                <th class="py-2.5 px-3 text-left">Name</th>
+                                <th class="py-2.5 px-3 text-left">Product ID</th>
+                                <th class="py-2.5 px-3 text-left">Category</th>
+                                <th class="py-2.5 px-3 text-left">Price</th>
+                                <th class="py-2.5 px-3 text-left">Stock</th>
+                                <th class="py-2.5 px-3 text-left">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-orange-200/50 text-sm">
+                            <tr class="row-custom transition hover:brightness-95">
+                                <td class="py-2.5 px-3 font-semibold text-gray-800">Track Sensor</td>
+                                <td class="py-2.5 px-3 font-medium text-gray-700">PRD-1001</td>
+                                <td class="py-2.5 px-3 text-gray-600">Hardware</td>
+                                <td class="py-2.5 px-3 text-gray-600">$120.00</td>
+                                <td class="py-2.5 px-3 text-gray-600">48</td>
+                                <td class="py-2.5 px-3 space-x-2">
+                                    <button class="text-green-700 font-bold text-xs inline-flex items-center"><i
+                                            class="fa-solid fa-pen-to-square mr-1"></i></button>
+                                    <button class="text-red-700 font-bold text-xs inline-flex items-center"><i
+                                            class="fa-solid fa-trash-can mr-1"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="row-custom transition hover:brightness-95">
+                                <td class="py-2.5 px-3 font-semibold text-gray-800">Signal Lamp</td>
+                                <td class="py-2.5 px-3 font-medium text-gray-700">PRD-1002</td>
+                                <td class="py-2.5 px-3 text-gray-600">Hardware</td>
+                                <td class="py-2.5 px-3 text-gray-600">$35.00</td>
+                                <td class="py-2.5 px-3 text-gray-600">120</td>
+                                <td class="py-2.5 px-3 space-x-2">
+                                    <button class="text-green-700 font-bold text-xs inline-flex items-center"><i
+                                            class="fa-solid fa-pen-to-square mr-1"></i></button>
+                                    <button class="text-red-700 font-bold text-xs inline-flex items-center"><i
+                                            class="fa-solid fa-trash-can mr-1"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="row-custom transition hover:brightness-95">
+                                <td class="py-2.5 px-3 font-semibold text-gray-800">Controller Unit</td>
+                                <td class="py-2.5 px-3 font-medium text-gray-700">PRD-1003</td>
+                                <td class="py-2.5 px-3 text-gray-600">Electronics</td>
+                                <td class="py-2.5 px-3 text-gray-600">$295.00</td>
+                                <td class="py-2.5 px-3 text-gray-600">12</td>
+                                <td class="py-2.5 px-3 space-x-2">
+                                    <button class="text-green-700 font-bold text-xs inline-flex items-center"><i
+                                            class="fa-solid fa-pen-to-square mr-1"></i></button>
+                                    <button class="text-red-700 font-bold text-xs inline-flex items-center"><i
+                                            class="fa-solid fa-trash-can mr-1"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="row-custom transition hover:brightness-95">
+                                <td class="py-2.5 px-3 font-semibold text-gray-800">Track Bolt Set</td>
+                                <td class="py-2.5 px-3 font-medium text-gray-700">PRD-1004</td>
+                                <td class="py-2.5 px-3 text-gray-600">Hardware</td>
+                                <td class="py-2.5 px-3 text-gray-600">$8.50</td>
+                                <td class="py-2.5 px-3 text-gray-600">500</td>
+                                <td class="py-2.5 px-3 space-x-2">
+                                    <button class="text-green-700 font-bold text-xs inline-flex items-center"><i
+                                            class="fa-solid fa-pen-to-square mr-1"></i></button>
+                                    <button class="text-red-700 font-bold text-xs inline-flex items-center"><i
+                                            class="fa-solid fa-trash-can mr-1"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="row-custom transition hover:brightness-95">
+                                <td class="py-2.5 px-3 font-semibold text-gray-800">Beacon Module</td>
+                                <td class="py-2.5 px-3 font-medium text-gray-700">PRD-1005</td>
+                                <td class="py-2.5 px-3 text-gray-600">Electronics</td>
+                                <td class="py-2.5 px-3 text-gray-600">$45.00</td>
+                                <td class="py-2.5 px-3 text-gray-600">75</td>
+                                <td class="py-2.5 px-3 space-x-2">
+                                    <button class="text-green-700 font-bold text-xs inline-flex items-center"><i
+                                            class="fa-solid fa-pen-to-square mr-1"></i></button>
+                                    <button class="text-red-700 font-bold text-xs inline-flex items-center"><i
+                                            class="fa-solid fa-trash-can mr-1"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="mt-4 flex items-center justify-end space-x-2">
+                    <button class="pagination-btn text-sm"><i class="fa-solid fa-angle-left"></i></button>
+                    <button class="pagination-btn text-sm bg-amber-200 font-bold">1</button>
+                    <button class="pagination-btn text-sm">2</button>
+                    <button class="pagination-btn text-sm">3</button>
+                    <button class="pagination-btn text-sm">...</button>
+                    <button class="pagination-btn text-sm">16</button>
+                    <button class="pagination-btn text-sm"><i class="fa-solid fa-angle-right"></i></button>
+                </div>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Basic client-side search filter
+        document.getElementById('searchInput')?.addEventListener('input', function (e) {
+            const q = e.target.value.toLowerCase();
+            document.querySelectorAll('tbody tr').forEach(tr => {
+                const txt = tr.innerText.toLowerCase();
+                tr.style.display = txt.includes(q) ? '' : 'none';
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -4,10 +4,72 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-color: #F57420;
+    --secondary-color: #347639;
+    --accent-color: #217283;
+    --bg-off-white: #F7E5D9;
+    --white: #ffffff;
+    --black: #000000;
+    --primary-font: "Inter", sans-serif;
+}
+
+body {
+    font-family: var(--primary-font);
+    color: var(--black);
+}
+
 .bg-off-white {
     background-image: url("../images/off-white-bg.png");
 }
 
 .bg-orange {
     background-image: url("../images/orange-bg.png");
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* login page */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.58);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 20px 35px -20px rgba(0, 0, 0, 0.35);
+}
+
+.login-shadow {
+    box-shadow: 0 20px 40px -25px rgba(6, 12, 23, 0.45);
+}
+
+.card-raised {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+}
+
+.btn-green-gradient {
+    background: linear-gradient(180deg, #4CAF50 0%, #388E3C 100%);
+    border-top: 1px solid #81C784;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-orange-gradient {
+    background: linear-gradient(180deg, #FF9800 0%, #F57C00 100%);
+    border-top: 1px solid #FFB74D;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

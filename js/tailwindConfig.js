@@ -2,7 +2,12 @@ tailwind.config = {
     theme: {
         extend: {
             colors: {
-                offWhite: '#f7E5D9',
+                fontFamily: {
+                    rvFont: ["Inter", "sans-serif"],
+                },
+
+                offWhite: '#F7E5D9',
+
                 primary: {
                     50: '#FEF1E9',
                     100: '#FDE0CF',

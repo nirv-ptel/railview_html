@@ -1,53 +1,144 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RailView — Ticket Status Update</title>
-    <style>
-      body,table,td,a{ -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
-      table,td{ mso-table-lspace:0pt; mso-table-rspace:0pt; }
-      img{ border:0; height:auto; line-height:100%; outline:none; text-decoration:none; }
-      body{ margin:0; padding:0; width:100% !important; background:#f7f3f0; font-family:Arial,Helvetica,sans-serif; }
-      .container{ max-width:700px; margin:24px auto; background:#fff; border-radius:8px; overflow:hidden; }
-      .header{ background:#d97706; color:#fff; padding:16px 20px; display:flex; gap:12px; align-items:center; }
-      .body{ padding:20px; color:#333; }
-      .status-badge{ display:inline-block; padding:8px 12px; border-radius:6px; font-weight:700; color:#fff; }
-      .status-open{ background:#6b7280; }
-      .status-inprogress{ background:#f59e0b; }
-      .status-closed{ background:#10b981; }
-      .details{ margin-top:12px; border:1px solid #efe6da; background:#fffaf1; padding:12px; border-radius:8px; }
-      .cta{ display:inline-block; background:#388E3C; color:#fff; padding:10px 14px; border-radius:6px; text-decoration:none; font-weight:700; }
-      .footer{ background:#fbf8f6; padding:14px 18px; font-size:12px; color:#6b6b6b; }
-      @media only screen and (max-width:480px){ .body{ padding:14px; } }
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="supported-color-schemes" content="light dark" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title></title>
+    <style type="text/css">
+        :root {
+            color-scheme: light dark;
+            supported-color-schemes: light dark;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .email-title {
+                font-size: 32px !important;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .header-links {
+                color: #ffffff !important;
+            }
+
+            .mail-text-white {
+                color: #ffffff !important;
+            }
+
+            .mail-text-always-white {
+                color: #ffffff !important;
+            }
+
+            .mail-text-always-black {
+                color: #000000 !important;
+            }
+
+            .mail-bg-offdark {
+                background-color: #181818 !important;
+            }
+
+            /* icloud only */
+            .mail-message-defaults .header-links {
+                color: #666666 !important;
+            }
+
+            .mail-message-defaults .mail-text-white {
+                color: #000000 !important;
+            }
+
+            .mail-message-defaults .mail-text-always-white {
+                color: #ffffff !important;
+            }
+
+            .mail-message-defaults .mail-text-always-black {
+                color: #000000 !important;
+            }
+
+            .mail-message-defaults .mail-bg-offdark {
+                background-color: #f5f5f5 !important;
+            }
+        }
     </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="header">
-        <div style="width:44px;height:44px;border-radius:6px;background:#fff;padding:4px;"><img src="./images/logo/logo.png" style="width:100%;height:100%;object-fit:contain;border-radius:4px;"/></div>
-        <div>
-          <div style="font-weight:700;">RailView Admin</div>
-          <div style="font-size:12px;opacity:.95;">Ticket Status Update</div>
-        </div>
-      </div>
-      <div class="body">
-        <h2 style="margin:0 0 6px 0;">Ticket status updated</h2>
-        <p style="margin:0 0 10px 0;color:#555;">Ticket <strong>{{ticket_id}}</strong> — <em>{{ticket_title}}</em></p>
+</head>
 
-        <div style="margin-bottom:10px;">
-          <span class="status-badge status-{{status_class}}">{{status}}</span>
-        </div>
+<body style="margin: 0">
+    <table
+        style="max-width: 600px; width: 100%; margin: 0 auto; border-spacing: 0px; font-family: Arial, Helvetica, 'Times New Roman', sans-serif; line-height: 1.6; padding: 20px 0;">
+        <tbody>
+            <tr>
+                <td
+                    style="line-height: normal; border-radius: 6px 6px 0 0; background-image: url(./images/orange-bg.png); padding: 16px;">
+                    <a href="#" target="_blank">
+                        <img src="./images/logo/logo.png" alt="logo" style="height: 55px;" /></a>
+                </td>
+            </tr>
+            <tr>
+                <td style="background-image: url(./images/off-white-bg.png);">
+                    <table>
+                        <tr>
+                            <td style="padding: 10px 15px; font-size: 16px; text-align: left; color: #000000;">
+                                <p style="font-size: 24px; font-weight: bold; margin: 0;">Ticket status updated</p>
 
-        <div class="details">
-          <div><strong>Updated by:</strong> {{updated_by}}</div>
-          <div style="margin-top:6px;"><strong>Comment:</strong> {{comment}}</div>
-        </div>
+                                <p class="small">Ticket <strong>{{ticket_id}}</strong> — <em>{{ticket_title}}</em></p>
+                                <p style="font-weight: bold;">Status: {{status}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0px 15px; font-size: 16px; text-align: left; color: #000000;">
+                                <p style="margin-top: 0;"><strong>Updated by:</strong> {{updated_by}}</p>
+                                <p style="margin-bottom: 0;"><strong>Comment:</strong> {{comment}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                                style="padding: 20px; border-radius: 20px; line-height: 1.6; color: #000000; font-size: 16px;">
+                                <div style="line-height: 1.6;">
+                                    <p style="margin: 0;">Open the ticket to view full history and add updates.</p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0 10px 20px 10px;">
+                                <div>
+                                    <p class="mail-text-always-black" style="margin: 0;"><a
+                                            class="mail-text-always-black" href="{{invite_link}}" target="_blank"
+                                            style="text-decoration: none; display: inline-block; background: url(./images/orange-bg.png); border-radius: 6px; padding: 8px 20px; cursor: pointer; color: #000000 !important; border: 1px solid #181818;"
+                                            rel="noopener"> <button class="mail-text-always-black"
+                                                style="display: inline-flex; border: 0; background-color: transparent; text-decoration: none; color: #000000; cursor: pointer; font-size: 16px; font-weight: bold;">Open
+                                                Ticket</button> </a></p>
+                                </div>
+                            </td>
+                        </tr>
 
-        <p style="margin-top:12px;">Open the ticket to view full history and add updates.</p>
-        <a class="cta" href="{{ticket_link}}">Open Ticket</a>
-      </div>
-      <div class="footer">RailView — Ticketing notifications</div>
-    </div>
-  </body>
+
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td
+                    style="background-image: url(./images/orange-bg.png); height: 10px; border-radius: 0 0 6px 6px; font-size: 0; line-height: 0;">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td
+                    style="padding: 0 10px; border-radius: 20px; line-height: 1.6; font-size: 12px; text-align: center;">
+                    <p style="color: #636363; margin-bottom: 0;">&copy; 2026 RailView - All Rights
+                        Reserved.</p>
+                    <p
+                        style="margin: 10px 0 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; line-height: 18px; color: #bbbbbb;">
+                        <a href="#" style="color: #636363; text-decoration: underline;">Privacy Policy</a> |
+                        <a href="#" style="color: #636363; text-decoration: underline;">Unsubscribe</a>
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
 </html>
